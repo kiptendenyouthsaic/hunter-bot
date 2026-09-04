@@ -221,12 +221,12 @@ async function startBot() {
   const sessionFile = path.join(sessionFolder, 'creds.json');
 
   // Check if sessionID is provided and process HunterBot! format session
-  if (config.sessionID && config.sessionID.startsWith('HunterBot!')) {
+  if (config.sessionID && config.sessionID.startsWith('KnightBot!')) {
     try {
       const [header, b64data] = config.sessionID.split('!');
 
-      if (header !== 'HunterBot' || !b64data) {
-        throw new Error("❌ Invalid session format. Expected 'HunterBot!.....'");
+      if (header !== 'KnightBot' || !b64data) {
+        throw new Error("❌ Invalid session format. Expected 'KnightBot!.....'");
       }
 
       const cleanB64 = b64data.replace('...', '');
@@ -240,10 +240,10 @@ async function startBot() {
 
       // Write decompressed session data to creds.json
       fs.writeFileSync(sessionFile, decompressedData, 'utf8');
-      console.log('📡 Session : 🔑 Retrieved from HunterBot Session');
+      console.log('📡 Session : 🔑 Retrieved from KnightBot Session');
 
     } catch (e) {
-      console.error('📡 Session : ❌ Error processing HunterBot session:', e.message);
+      console.error('📡 Session : ❌ Error processing KnightBot session:', e.message);
       // Continue with normal QR flow if session processing fails
     }
   }
